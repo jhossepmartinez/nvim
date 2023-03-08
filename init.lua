@@ -20,4 +20,4 @@ require("config.autocmds")
 
 vim.cmd("colorscheme rose-pine")
 
--- huh
+-- huhs
