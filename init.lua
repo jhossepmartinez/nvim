@@ -16,4 +16,7 @@ require("config.options")
 
 require("lazy").setup("plugins")
 
+require("config.autocmds")
+
 vim.cmd("colorscheme rose-pine")
+

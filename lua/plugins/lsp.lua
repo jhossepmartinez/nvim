@@ -1,4 +1,5 @@
 return {
+     
     -- Lsp Zero
     {
         "VonHeikemen/lsp-zero.nvim",
@@ -24,7 +25,7 @@ return {
         config = function()
             local lsp = require('lsp-zero').preset({
                 name = 'minimal',
-                set_lsp_keymaps = true,
+                set_lsp_keymaps = false,
                 manage_nvim_cmp = true,
                 suggest_lsp_servers = false,
             })
@@ -55,11 +56,11 @@ return {
                 end
             })
 
-            lsp.setup_nvim_cmp({
-                sources = {
-                    { name = 'nvim_lsp', keyword_length = 2}
-                }
-            })
+            -- lsp.setup_nvim_cmp({
+            --     sources = {
+            --         { name = 'nvim_lsp'}
+            --     }
+            -- })
 
             lsp.setup()
         end
@@ -68,7 +69,11 @@ return {
         "glepnir/lspsaga.nvim",
         lazy = false,
         config = function()
-            require("lspsaga").setup({})
+            require("lspsaga").setup({
+                ui = {
+                    border = "rounded"
+                }
+            })
         end,
         keys = {
             { "gd", "<cmd>Lspsaga peek_definition<CR>" },
@@ -78,4 +83,3 @@ return {
 
     }
 }
-
