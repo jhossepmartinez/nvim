@@ -33,6 +33,7 @@ return {
             lsp.ensure_installed({
                 "lua_ls",
                 "clangd",
+                "cssls",
                 "vimls",
                 "tsserver",
                 "html",

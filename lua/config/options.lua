@@ -6,9 +6,9 @@ opt.number = true -- shows absolute line number on cursor line (when relative nu
 
 -- Tabs & Indentation
 opt.tabstop = 4
-opt.shiftwidth = 4 
-opt.expandtab = true 
-opt.autoindent = true 
+opt.shiftwidth = 4
+opt.expandtab = true
+opt.autoindent = true
 
 -- Wrapping
 opt.wrap = false 
@@ -27,3 +27,4 @@ opt.backspace = "indent,eol,start"
 -- Clipboard
 opt.clipboard:append("unnamedplus")
 
+vim.opt.guicursor = "a:blinkon1"

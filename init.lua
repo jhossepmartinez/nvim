@@ -11,12 +11,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 require("config.keymaps")
 require("config.options")
 
 require("lazy").setup("plugins")
 
-require("config.autocmds")
-
 vim.cmd("colorscheme rose-pine")
 
+require("config.autocmds")

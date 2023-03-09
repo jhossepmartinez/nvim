@@ -40,8 +40,8 @@ return {
             }
         },
         keys = {
-            { "<S-j>", "<cmd>BufferLineCycleNext<CR>" },
-            { "<S-k>", "<cmd>BufferLineCyclePrev<CR>" }
+            { "<S-l>", "<cmd>BufferLineCycleNext<CR>" },
+            { "<S-h>", "<cmd>BufferLineCyclePrev<CR>" }
         }
     },
     -- Lualine
