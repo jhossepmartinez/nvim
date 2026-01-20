@@ -29,7 +29,7 @@ local lsp_servers = {
 
 	"jdtls",
 	"phpactor",
-	"protols",
+	-- "protols",
 
 	"terraform-ls",
 }

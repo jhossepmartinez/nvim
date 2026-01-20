@@ -8,7 +8,7 @@ vim.lsp.enable({
 	"vimls",
 	"prismals",
 	"tailwind",
-	"protols",
+	-- "protols",
 	"eslint",
 	"pyright",
 	"rust_analyzer",
