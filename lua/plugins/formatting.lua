@@ -13,8 +13,8 @@ local lsp_servers = {
 	"vim-language-server",
 
 	"pyright",
-	"clangd",
-	"rust-analyzer",
+	-- "clangd",
+	-- "rust-analyzer",
 
 	-- "eslint",
 	"typescript-language-server",

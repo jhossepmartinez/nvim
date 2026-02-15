@@ -4,8 +4,8 @@ local lsp_servers = {
 	"vimls",
 
 	"pyright",
-	"clangd",
-	"rust_analyzer",
+	-- "clangd",
+	-- "rust_analyzer",
 
 	-- "eslint",
 	"ts_ls",
