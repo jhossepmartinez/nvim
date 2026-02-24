@@ -1,5 +1,4 @@
 return {
-	-- Lualine
 	{
 		"nvim-lualine/lualine.nvim",
 		lazy = false,
@@ -85,7 +84,6 @@ return {
 				return spinners[frame + 1]
 			end
 
-			-- vim.cmd("hi DiagnosticError1 guifg=#9e4435 guibg=#448eb4")
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
@@ -177,7 +175,6 @@ return {
 		end,
 		enabled = true,
 	},
-	-- Neotree
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",

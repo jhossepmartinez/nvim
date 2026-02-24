@@ -37,7 +37,6 @@ local lsp_servers = {
 return {
 	{
 		"stevearc/conform.nvim",
-
 		config = function()
 			require("conform").setup({
 				formatters_by_ft = {
@@ -89,6 +88,7 @@ return {
 	},
 	{
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		dependencies = { "mason-org/mason.nvim", opts = {} },
 		config = function()
 			local ensure_installed = {}
 			table.move(formatters, 1, #formatters, 1, ensure_installed)
