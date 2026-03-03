@@ -24,7 +24,8 @@ vim.diagnostic.config({
 	severity_sort = true,
 	float = {
 		format = function(diagnostic)
-			return "▌" .. diagnostic.message
+			local source = diagnostic.source and string.format(" [%s]", diagnostic.source) or ""
+			return "▌" .. diagnostic.message .. source
 		end,
 	},
 })
