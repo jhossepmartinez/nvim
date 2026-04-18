@@ -1,13 +1,13 @@
-vim.api.nvim_create_autocmd("BufWritePost", {
-	buffer = 0,
-	callback = function(args)
-		local clients = vim.lsp.get_clients({ bufnr = args.buf, name = "terraformls" })
-		for _, client in ipairs(clients) do
-			vim.lsp.stop_client(client.id)
-		end
-		vim.defer_fn(function()
-			vim.cmd("edit")
-		end, 100)
-	end,
-	desc = "Restart terraform-ls on save",
-})
+-- vim.api.nvim_create_autocmd("BufWritePost", {
+-- 	buffer = 0,
+-- 	callback = function(args)
+-- 		local clients = vim.lsp.get_clients({ bufnr = args.buf, name = "terraformls" })
+-- 		for _, client in ipairs(clients) do
+-- 			vim.lsp.stop_client(client.id)
+-- 		end
+-- 		vim.defer_fn(function()
+-- 			vim.cmd("edit")
+-- 		end, 100)
+-- 	end,
+-- 	desc = "Restart terraform-ls on save",
+-- })
