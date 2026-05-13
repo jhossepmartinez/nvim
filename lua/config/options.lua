@@ -22,6 +22,7 @@ opt.iskeyword = "@,48-57,_,192-255,-" -- Treat dash as `word` textobject
 opt.termguicolors = true
 opt.signcolumn = "yes:1"
 opt.scrolloff = 5
+opt.cmdheight = 0
 
 -- Clipboard
 opt.clipboard:append("unnamedplus")

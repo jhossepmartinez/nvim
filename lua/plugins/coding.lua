@@ -28,6 +28,7 @@ return {
 				},
 			})
 		end,
+		enabled = false,
 	},
 	{
 		"kevinhwang91/nvim-ufo",

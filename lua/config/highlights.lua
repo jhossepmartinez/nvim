@@ -1,7 +1,7 @@
 vim.cmd("hi Folded guibg=none")
 vim.cmd("hi FoldColumn guibg=none")
 
-vim.cmd("hi CursorLineNr guifg=#f2f2f2")
+vim.cmd("hi CursorLineNr guifg=#f2f2f2 gui=bold")
 vim.cmd("hi CursorLineFold guifg=#f2f2f2")
 vim.cmd("hi CursorLine guibg=none")
 

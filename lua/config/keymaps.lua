@@ -28,3 +28,4 @@ keymap("n", "]d", vim.diagnostic.goto_next)
 -- Lsp
 keymap("n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 keymap("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
+keymap("n", "<Leader>rr", "<cmd>LspRestart<CR>")

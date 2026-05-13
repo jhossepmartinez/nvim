@@ -14,6 +14,7 @@ vim.lsp.enable({
 	"rust_analyzer",
 	"gopls",
 	"terraformls",
+	"mdx_analyzer",
 })
 
 vim.diagnostic.config({

@@ -7,6 +7,7 @@ return {
 					"c",
 					"lua",
 					"vim",
+					"css",
 					"markdown",
 					"markdown_inline",
 					"json",
@@ -25,7 +26,7 @@ return {
 					"terraform",
 				},
 				highlight = {
-					enable = true,
+					enable = false,
 					disable = function(lang, buf)
 						local max_filesize = 100 * 1024 -- 100 kb
 						local ok, file_stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
@@ -45,5 +46,9 @@ return {
 				},
 			})
 		end,
+	},
+	{
+		"davidmh/mdx.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
 	},
 }

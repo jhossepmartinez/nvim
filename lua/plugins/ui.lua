@@ -3,6 +3,38 @@ return {
 		"nvim-lualine/lualine.nvim",
 		lazy = false,
 		config = function()
+			local transparent_theme = require("lualine.themes.auto")
+
+			-- 2. Strip the background colors from the middle sections for every mode
+			for _, mode in pairs(transparent_theme) do
+				if mode.a then
+					mode.a.fg = "NONE"
+					mode.a.bg = "#f2f2f2"
+				end
+				-- Make the mode section text the color of its original background,
+				-- and make the background itself transparent
+				if mode.a then
+					mode.a.fg = mode.a.bg
+					mode.a.bg = "NONE"
+				end
+
+				-- Make the middle sections transparent
+				if mode.b then
+					mode.b.bg = "NONE"
+				end
+				if mode.c then
+					mode.c.bg = "NONE"
+				end
+			end
+			-- Custom component: Python Virtual Env
+			local function python_venv()
+				local venv = os.getenv("VIRTUAL_ENV")
+				if venv then
+					local name = string.match(venv, "([^/]+)$")
+					return string.format("🐍 %s", name)
+				end
+				return ""
+			end
 			local colors = {
 				black = "#000000",
 				white = "#f8efd8",
@@ -24,119 +56,26 @@ return {
 				rose = "#d7c4ca",
 				none = "none",
 			}
-			local themes = {
-				normal = {
-					a = { bg = "#ad5633", fg = "#fefad2", gui = "bold" },
-					b = { bg = colors.none, fg = colors.none },
-					c = { bg = colors.none, fg = colors.none },
-					y = { bg = colors.none, fg = colors.none },
-					z = { bg = colors.none, fg = colors.none },
-				},
-				insert = {
-					a = { bg = colors.red, fg = colors.black, gui = "bold" },
-					b = { bg = colors.none, fg = colors.none },
-					c = { bg = colors.none, fg = colors.none },
-					y = { bg = colors.none, fg = colors.gray },
-					z = { bg = colors.none, fg = colors.none },
-				},
-				visual = {
-					a = { bg = "#955558", fg = "#ffbeb8", gui = "bold" },
-					b = { bg = colors.none, fg = colors.none },
-					c = { bg = colors.none, fg = colors.none },
-					y = { bg = colors.none, fg = colors.gray },
-					z = { bg = colors.none, fg = colors.none },
-				},
-				replace = {
-					a = { bg = colors.red, fg = colors.black, gui = "bold" },
-					b = { bg = colors.none, fg = colors.none },
-					c = { bg = colors.none, fg = colors.none },
-					y = { bg = colors.none, fg = colors.gray },
-					z = { bg = colors.none, fg = colors.none },
-				},
-				command = {
-					a = { bg = colors.green, fg = "#86a56c", gui = "bold" },
-					b = { bg = colors.none, fg = colors.none },
-					c = { bg = colors.none, fg = colors.none },
-					y = { bg = colors.none, fg = colors.gray },
-					z = { bg = colors.none, fg = colors.none },
-				},
-				inactive = {
-					a = { bg = colors.darkgray, fg = colors.gray, gui = "bold" },
-					b = { bg = colors.none, fg = colors.none },
-					c = { bg = colors.none, fg = colors.none },
-					y = { bg = colors.none, fg = colors.gray },
-					z = { bg = colors.none, fg = colors.none },
-				},
-			}
-			local function copilotStatus()
-				local client = vim.lsp.get_clients({ name = "copilot" })[1]
-				if client == nil then
-					return ""
-				end
-				if vim.tbl_isempty(client.requests) then
-					return " " -- default icon whilst copilot is idle
-				end
-
-				local spinners = { "⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷" }
-				local ms = vim.loop.hrtime() / 1000000
-				local frame = math.floor(ms / 60) % #spinners
-
-				return spinners[frame + 1]
-			end
 
 			require("lualine").setup({
 				options = {
 					icons_enabled = true,
 					disabled_filetypes = { "neo-tree" },
-					theme = themes,
-					-- globalstatus = true,
-					-- section_separators = { left = "", right = "" },
-					-- section_separators = { left = "", right = "" },
-					-- section_separators = { left = "", right = "" },
-					-- section_separators = { left = "", right = "•" },
+					theme = transparent_theme,
 					section_separators = { left = "", right = "" },
-					-- component_separators = { left = "", right = "" },
+					-- Separators:   •
 					component_separators = { left = "", right = "" },
 				},
 				sections = {
 					lualine_b = {
 						{
-							function()
-								local venv = os.getenv("VIRTUAL_ENV")
-								if venv then
-									local name = string.match(venv, "([^/]+)$")
-									-- return string.format("🐍 %s", name)
-									return string.format("%s", name)
-								end
-								return ""
-							end,
-							cond = function() -- Extract just the env name
-								return os.getenv("VIRTUAL_ENV") ~= nil
-							end,
-							color = { fg = "#00d26a" },
-							padding = { left = 1, right = 0 },
-						},
-						{
 							"branch",
-							color = { fg = colors.lightgreen, bg = colors.none },
-							padding = { left = 1, right = 0 },
-						},
-						{
-							"diagnostics",
-							-- color = { bg = colors.none },
-							padding = { left = 1, right = 0 },
-							-- diagnostics_color = {
-							-- 	error = { fg = "#c45441", bg = colors.none }, -- Changes diagnostics' error color.
-							-- 	warn = { fg = "#e1d03e", bg = colors.none }, -- Changes diagnostics' warn color.
-							-- 	info = { fg = "#9e4435", bg = colors.none }, -- Changes diagnostics' info color.
-							-- 	hint = { fg = "#b9c156", bg = colors.none }, -- Changes diagnostics' hint color.
-							-- },
+							icon = "",
+							padding = { left = 0, right = 0 },
 						},
 						{
 							"filetype",
-							icon_only = true,
 							padding = { right = 0, left = 1 },
-							color = { bg = colors.none },
 							fmt = function(str)
 								if str == "" then
 									return "%s", str
@@ -147,13 +86,6 @@ return {
 						{
 							"filename",
 							path = 1,
-							color = { bg = colors.none, fg = colors.lightgray },
-							-- fmt = function(str)
-							-- 	if str == "[No Name]" then
-							-- 		return " [No Name]"
-							-- 	end
-							-- 	return str
-							-- end,
 							padding = { left = 0, right = 0 },
 						},
 					},
@@ -162,11 +94,7 @@ return {
 					lualine_z = {},
 					lualine_y = {
 						{
-							copilotStatus,
-							padding = {
-								-- left = 0,
-								right = 1,
-							},
+							color = { bg = colors.none },
 						},
 					},
 				},
