@@ -21,8 +21,6 @@ return {
 	{ "0xleodevv/oc-2.nvim" },
 	{
 		"fraeso/xcodedark.nvim",
-		lazy = false,
-		priority = 1000,
 		config = function()
 			require("xcodedark").setup({
 				transparent = true, -- or false if you prefer solid background
@@ -43,5 +41,6 @@ return {
 				terminal_colors = true,
 			})
 		end,
+		enabled = true,
 	},
 }

@@ -41,3 +41,6 @@ opt.fillchars:append({ foldopen = "", foldsep = " ", foldclose = "", vert 
 vim.g.python3_host_prog = "/usr/bin/python3"
 
 opt.wildmode = "noselect:lastused,full"
+
+opt.guicursor =
+	"n-v-c:block-cursor/Cursor-blinkwait700-blinkoff400-blinkon250,i-ci-ve:ver25-Cursor/Cursor-blinkwait700-blinkoff400-blinkon250"

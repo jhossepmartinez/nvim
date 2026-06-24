@@ -26,15 +26,7 @@ return {
 					mode.c.bg = "NONE"
 				end
 			end
-			-- Custom component: Python Virtual Env
-			local function python_venv()
-				local venv = os.getenv("VIRTUAL_ENV")
-				if venv then
-					local name = string.match(venv, "([^/]+)$")
-					return string.format("🐍 %s", name)
-				end
-				return ""
-			end
+
 			local colors = {
 				black = "#000000",
 				white = "#f8efd8",
@@ -62,7 +54,7 @@ return {
 					icons_enabled = true,
 					disabled_filetypes = { "neo-tree" },
 					theme = transparent_theme,
-					section_separators = { left = "", right = "" },
+					section_separators = { left = "", right = "" },
 					-- Separators:   •
 					component_separators = { left = "", right = "" },
 				},
@@ -70,23 +62,26 @@ return {
 					lualine_b = {
 						{
 							"branch",
+							color = { fg = "#f2f2f2" },
 							icon = "",
 							padding = { left = 0, right = 0 },
 						},
-						{
-							"filetype",
-							padding = { right = 0, left = 1 },
-							fmt = function(str)
-								if str == "" then
-									return "%s", str
-								end
-								return "%s", str
-							end,
-						},
+						-- {
+						-- 	"filetype",
+						-- 	color = { fg = "#f2f2f2" },
+						-- 	padding = { right = 0, left = 1 },
+						-- 	fmt = function(str)
+						-- 		if str == "" then
+						-- 			return "%s", str
+						-- 		end
+						-- 		return "%s", str
+						-- 	end,
+						-- },
 						{
 							"filename",
-							path = 1,
-							padding = { left = 0, right = 0 },
+							color = { fg = "#f2f2f2" },
+							-- path = 1,
+							-- padding = { left = 0, right = 0 },
 						},
 					},
 					lualine_c = {},
@@ -159,6 +154,7 @@ return {
 				},
 			},
 			filesystem = {
+				follow_current_file = { enabled = true },
 				filtered_items = {
 					hide_dotfiles = false,
 					hide_gitignored = false,

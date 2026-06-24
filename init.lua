@@ -21,6 +21,6 @@ require("config.lsp")
 
 require("lazy").setup("plugins")
 
-vim.cmd("colorscheme xcodedark")
+vim.cmd("colorscheme solarized")
 require("config.highlights")
 require("scripts.restart_lsp")

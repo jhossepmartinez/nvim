@@ -58,6 +58,8 @@ return {
 					php = { "php_cs_fixer" },
 					proto = { "buf" },
 					terraform = { "terraform_fmt" },
+					rust = { "rustfmt" },
+					c = { "clang-format" },
 					-- ckl = { "prettier" },
 				},
 				format_after_save = function(bufnr)
@@ -74,6 +76,9 @@ return {
 				-- 	lsp_format = "fallback",
 				-- },
 				formatters = {
+					rustfmt = {
+						command = vim.fn.expand("~/.cargo/bin/rustfmt"),
+					},
 					php_cs_fixer = {
 						command = "php-cs-fixer",
 						args = {

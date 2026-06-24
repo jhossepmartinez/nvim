@@ -35,5 +35,6 @@
   "statuscol.nvim": { "branch": "main", "commit": "2cdad94d0bdd7e56b9333d4e215bf5b05ba5ec1a" },
   "vim-fugitive": { "branch": "master", "commit": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4" },
   "vim-tmux-navigator": { "branch": "master", "commit": "c45243dc1f32ac6bcf6068e5300f3b2b237e576a" },
+  "vimtex": { "branch": "master", "commit": "182ad387e3f3107699483606c9a2b6648f8437b2" },
   "xcodedark.nvim": { "branch": "main", "commit": "1e39372b9d40a4b690d5a21b9d49eaa5d50e3fbe" }
 }

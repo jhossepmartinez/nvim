@@ -15,6 +15,7 @@ vim.lsp.enable({
 	"gopls",
 	"terraformls",
 	"mdx_analyzer",
+	"clangd",
 })
 
 vim.diagnostic.config({
