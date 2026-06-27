@@ -35,7 +35,7 @@ vim.api.nvim_set_hl(0, "Comment", { italic = true })
 opt.fillchars = { eob = " " }
 
 -- Fold Style
-opt.fillchars:append({ foldopen = "", foldsep = " ", foldclose = "", vert = "▏" })
+opt.fillchars:append({ foldopen = "", foldsep = " ", foldclose = "", vert = vim.fn.nr2char(0xE00C) })
 
 -- Providers
 vim.g.python3_host_prog = "/usr/bin/python3"

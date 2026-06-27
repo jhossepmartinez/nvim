@@ -41,6 +41,6 @@ return {
 				terminal_colors = true,
 			})
 		end,
-		enabled = true,
+		enabled = false,
 	},
 }
