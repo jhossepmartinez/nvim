@@ -25,4 +25,7 @@ vim.cmd("hi FancyDiagnosticErrorIcon guifg=#dc322f")
 vim.cmd("hi FancyDiagnosticWarn guifg=#b58900")
 vim.cmd("hi FancyDiagnosticWarnIcon guifg=#b58900")
 
+vim.cmd("hi NeoTreeDirectoryIcon guifg=#6d8086")
+vim.cmd("hi NeoTreeDirectoryName guifg=#6d8086")
+
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#2b343c", bg = "none" })
